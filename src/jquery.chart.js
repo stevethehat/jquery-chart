@@ -5,7 +5,7 @@
 			if(typeof(selector) == 'string'){
 			   return(td.find(selector).text());						   
 			} else {
-			   
+			   return(selector(td));
 			}
 		 } else {
 			return(td.text());
@@ -40,7 +40,7 @@
 								 row_data.push(getTdConents(td, options.labelSelector));
 								 break;
 							  default:
-								 row_data.push(Number(getTdConents(td, options.labelSelector)));
+								 row_data.push(Number(getTdConents(td, options.valueSelector)));
 								 break;
 						   }
 						}
@@ -77,6 +77,12 @@
 				  break;
 			   case 'line':
 				  chart = new google.visualization.LineChart(document.getElementById(chartID));
+				  break;
+			   case 'area':
+				  chart = new google.visualization.AreaChart(document.getElementById(chartID));
+				  break;
+			   case 'column':
+				  chart = new google.visualization.ColumnChart(document.getElementById(chartID));
 				  break;
 			}
 			chart.draw(data, options.apiOptions);
