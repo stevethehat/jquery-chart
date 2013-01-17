@@ -24,6 +24,9 @@
 	  return this.each(
 		 function() {  
 			var table = $(this);
+			console.log('.graph');
+			console.log(table);
+			console.log(options);
 			
 			var rows = [];
 			table.find('tr').each(
