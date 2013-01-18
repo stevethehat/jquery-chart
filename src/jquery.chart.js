@@ -99,9 +99,16 @@
 				console.log(table);
 				console.log(options);
 
-				var rows = getData(table);
-				// Create the data table.
-				generateChart(rows);
+				google.load('visualization', '1.0', 
+					{
+						'packages':['corechart'], 
+						callback: function(){
+							var rows = getData(table);
+							// Create the data table.
+							generateChart(rows);
+						}
+					}
+				);
 			}
 		);  
 	};  
