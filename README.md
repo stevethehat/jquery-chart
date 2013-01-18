@@ -1,4 +1,4 @@
 jquery-chart
 ============
 
-jquery plugin encapsulating google chart api
+jQuery plugin to generate google charts from tabular data within pages.

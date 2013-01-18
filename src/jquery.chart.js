@@ -1,7 +1,7 @@
 (function($){  
    $.fn.graph = function(options){
 		var defaults = {
-			chartType: 'pie',
+			chartType: 'PieChart',
 			columns: { '0': 'labels', '1': 'series1' },
 			apiOptions: { width: 400, height: 300, title: '' },
 			valueSelector: null,
@@ -72,36 +72,27 @@
 			var chartID = options.chartID;
 			var chart = null;
 
-			switch(options.chartType){
-				case 'pie':
-					chart = new google.visualization.PieChart(document.getElementById(chartID));
-					break;
-				case 'bar':
-					chart = new google.visualization.BarChart(document.getElementById(chartID));
-					break;
-				case 'line':
-					chart = new google.visualization.LineChart(document.getElementById(chartID));
-					break;
-				case 'area':
-					chart = new google.visualization.AreaChart(document.getElementById(chartID));
-					break;
-				case 'column':
-					chart = new google.visualization.ColumnChart(document.getElementById(chartID));
-					break;
-			}
+			chart = new google.visualization[options.chartType](document.getElementById(chartID));
 			chart.draw(data, options.apiOptions);		
 		}
 
 		return this.each(
 			function() {  
 				var table = $(this);
+				if(!options.apiOptions.width){
+					options.apiOptions.width = table.width();
+				}
+				
 				console.log('.graph');
 				console.log(table);
 				console.log(options);
+				
+				var packageName = 'corechart';
+				//var packageName = 'treemap';
 
 				google.load('visualization', '1.0', 
 					{
-						'packages':['corechart'], 
+						'packages':[packageName], 
 						callback: function(){
 							var rows = getData(table);
 							// Create the data table.
