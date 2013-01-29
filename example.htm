@@ -5,28 +5,26 @@
     <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.0.min.js"></script>
     <script type="text/javascript" src="src/jquery.chart.js"></script>
     <script type="text/javascript">
-
-      google.load('visualization', '1.0', {'packages':['corechart']});
-      google.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var chartOptions = {
-          chartID: 'chart_div1',
-          columns: { '0': 'labels', '1': 'series1' },
-          apiOptions: { 'title': 'a graph title' }
-        };
+		$(document).ready(
+			function(){
+				var chartOptions = {
+					chartID: 'chart_div1',
+					columns: { '0': 'labels', '1': 'series1' },
+					apiOptions: { 'title': 'a graph title' }
+				};
         
-        $('#table').graph(chartOptions);
+				$('#table').graph(chartOptions);
         
-        chartOptions.chartID = 'chart_div2';
-        chartOptions.chartType = 'bar';
-        $('#table').graph(chartOptions);
+				chartOptions.chartID = 'chart_div2';
+				chartOptions.chartType = 'BarChart';
+				$('#table').graph(chartOptions);
         
-        chartOptions.chartID = 'chart_div3';
-        chartOptions.chartType = 'line';
-        chartOptions.columns = { '0': 'labels', '1': 'series1', '2': 'series2' };
-        $('#table').graph(chartOptions);
-      }
+				chartOptions.chartID = 'chart_div3';
+				chartOptions.chartType = 'LineChart';
+				chartOptions.columns = { '0': 'labels', '1': 'series1', '2': 'series2' };
+				$('#table').graph(chartOptions);
+			}
+	);
     </script>
   </head>
 
