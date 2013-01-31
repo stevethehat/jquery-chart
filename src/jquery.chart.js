@@ -1,5 +1,5 @@
 (function($){  
-   $.fn.graph = function(options){
+   $.fn.chart = function(options){
 		var defaults = {
 			chartType: 'PieChart',
 			columns: { '0': 'labels', '1': 'series1' },
